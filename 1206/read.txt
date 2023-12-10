@@ -1,0 +1,68 @@
+schemas
+-door
+
+ DB테이블
+academic_schedule
+컬럼
+num INT /pk,nn,ai
+Year varchar45
+Month varchar45
+Date varchar45
+Schedule varchar45
+
+
+테이블
+cyber_task
+컬럼
+num INT /pk,nn,ai 
+ID                               varchar45
+Cyber_attendance          varchar45
+Cyber_absent              varchar45
+Cyber_Non_attendance    varchar45
+Cyber_Before_completion     varchar45 
+Cyber_assignmentName       varchar45 
+
+테이블 
+doorp
+컬럼
+id INT /pk,nn,ai   
+doorid        varchar45
+password       varchar45
+
+테이블
+mooc_task
+컬럼
+num INT /pk,nn,ai 
+ID                               varchar45
+mooc_toDoDate
+mooc_lectureName
+mooc_assignmentName
+mooc_Attendance
+
+
+
+테이블
+task
+컬럼
+num INT /pk,nn,ai 
+ID                               varchar45
+toDoDate                   varchar45
+lectureName            varchar45
+assignmentName         varchar45
+toDoSubmit                  varchar45
+
+
+
+테이블 
+todolist
+컬럼
+num INT /pk,nn,ai 
+Year varchar45
+Month varchar45
+Date varchar45
+schedule varchar100
+
+
+
+
+
