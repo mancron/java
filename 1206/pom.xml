@@ -1,0 +1,189 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+ 
+ 
+<build>
+    <plugins>
+      
+		<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <executions>
+        <execution>
+            <id>copy-dependencies</id>
+            <phase>prepare-package</phase>
+            <goals>
+                <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+                <outputDirectory>
+                    ${project.build.directory}/libs
+                </outputDirectory>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+        <archive>
+            <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>libs/</classpathPrefix>
+                <mainClass>
+                    com.baeldung.executable.ExecutableMavenJar
+                </mainClass>
+            </manifest>
+        </archive>
+    </configuration>
+</plugin>
+      
+      <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-shade-plugin</artifactId>
+    <executions>
+        <execution>
+            <goals>
+                <goal>shade</goal>
+            </goals>
+            <configuration>
+                <shadedArtifactAttached>true</shadedArtifactAttached>
+                <transformers>
+                    <transformer implementation=
+                      "org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                        <mainClass>com.baeldung.executable.ExecutableMavenJar</mainClass>
+                </transformer>
+            </transformers>
+        </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+<plugin>
+    <groupId>com.jolira</groupId>
+    <artifactId>onejar-maven-plugin</artifactId>
+    <executions>
+        <execution>
+            <configuration>
+                <mainClass>org.baeldung.executable.
+                  ExecutableMavenJar</mainClass>
+                <attachToBuild>true</attachToBuild>
+                <filename>
+                  ${project.build.finalName}.${project.packaging}
+                </filename>
+            </configuration>
+            <goals>
+                <goal>one-jar</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <executions>
+        <execution>
+            <goals>
+                <goal>repackage</goal>
+            </goals>
+            <configuration>
+                <classifier>spring-boot</classifier>
+                <mainClass>
+                  com.baeldung.executable.ExecutableMavenJar
+                </mainClass>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+<plugin>
+    <groupId>org.apache.tomcat.maven</groupId>
+    <artifactId>tomcat7-maven-plugin</artifactId>
+    <version>2.0</version>
+    <executions>
+        <execution>
+            <id>tomcat-run</id>
+            <goals>
+                <goal>exec-war-only</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+                <path>/</path>
+                <enableNaming>false</enableNaming>
+                <finalName>webapp.jar</finalName>
+                <charset>utf-8</charset>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
+
+    </plugins>
+  </build>
+  
+ 
+ 
+ 
+ 
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>test</groupId>
+  <artifactId>test1</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependencies>  
+
+
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.15.0</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+<dependency>
+    <groupId>com.mysql</groupId>
+    <artifactId>mysql-connector-j</artifactId>
+    <version>8.0.33</version>
+</dependency>
+
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>3.141.59</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>5.2.3</version>
+</dependency>
+
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>5.2.3</version>
+</dependency>
+
+
+
+
+
+</dependencies>
+
+
+</project>
+
+
+
+
+
+
+
+
+
+
+
+
